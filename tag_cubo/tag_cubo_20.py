@@ -1,11 +1,12 @@
 import cadquery as cq
+from ocp_vscode import show, set_port
 
 # Parâmetros
 altura = 20      # z
 largura = 20     # x
 espessura = 20   # y
-diametro_circulo = 15
-profundidade_circulo = 2
+diametro_circulo = 15.5
+profundidade_circulo = 2.2
 raio_arredondamento = 4
 
 # Criar cubo com arestas arredondadas
@@ -35,4 +36,8 @@ resultado = resultado.faces(">X").workplane(centerOption="CenterOfBoundBox").cir
 resultado = resultado.faces("<X").workplane(centerOption="CenterOfBoundBox").circle(diametro_circulo/2).cutBlind(-profundidade_circulo)
 
 # Exportar para STL
-cq.exporters.export(resultado, "tag_cubo_20.stl")
+cq.exporters.export(resultado, f"./stl/tag_cubo_{altura}.stl")
+
+
+set_port(3939)
+show(resultado)
