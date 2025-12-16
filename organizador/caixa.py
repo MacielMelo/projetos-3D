@@ -1,4 +1,5 @@
 import cadquery as cq
+from ocp_vscode import *
 
 def criar_caixa_parametrica(
     largura=50,
@@ -30,5 +31,7 @@ minha_caixa = criar_caixa_parametrica(
     raio_cantos=4
 )
 
+set_port(3939)
+show(minha_caixa)
 # Exportar
-cq.exporters.export(minha_caixa, "caixa.stl")
+# cq.exporters.export(minha_caixa, "caixa.stl")
